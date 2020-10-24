@@ -47,6 +47,7 @@ type Query {
   uploads: [File]
   chatRooms: [ChatRoom]
   chatRoom(id: ID!): String!
+  drawData: JSON
 }
 
 type Mutation {
@@ -58,6 +59,7 @@ type Mutation {
   createChatRoom(userId: ID!, name: String!): ChatRoom!
   userJoinedRoom(id: ID!, userId: ID!, name: String!): String
   addChatRoomMessage(id: ID!, name: String!, message: String!): String
+  updateCanvasState(id: ID!, state: JSON!): JSON
 }
 
 type Subscription {
@@ -68,4 +70,5 @@ type Subscription {
   messageAdded: Message!
   chatRoomsUpdated: ChatRoom!
   chatRoomMessage(id: ID!): String
+  canvasUpdated(id: ID!): JSON!
 }

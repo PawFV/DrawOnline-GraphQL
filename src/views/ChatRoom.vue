@@ -4,11 +4,11 @@
 
     <div class="messages">
       <ApolloQuery
-        :query="require('../graphql/ChatRoom.gql')"
+        :query="require('../graphql/room/ChatRoom.gql')"
         :variables="{ id: $route.params.id }"
       >
         <ApolloSubscribeToMore
-          :document="require('../graphql/ChatRoomMessage.gql')"
+          :document="require('../graphql/room/ChatRoomMessage.gql')"
           :variables="{ id: $route.params.id }"
           :updateQuery="onChatRoomMessage"
         />
@@ -19,7 +19,7 @@
     </div>
     <div class="send-message">
       <ApolloMutation
-        :mutation="require('../graphql/AddChatRoomMessage.gql')"
+        :mutation="require('../graphql/room/AddChatRoomMessage.gql')"
         :variables="{
           id: $route.params.id,
           name: $store.state.user.name,
@@ -55,7 +55,7 @@ export default {
   mounted() {
     this.$apollo
       .mutate({
-        mutation: require('../graphql/UserJoinedRoom.gql'),
+        mutation: require('../graphql/room/UserJoinedRoom.gql'),
         variables: {
           id: this.$route.params.id,
           userId: this.$store.state.user.id,

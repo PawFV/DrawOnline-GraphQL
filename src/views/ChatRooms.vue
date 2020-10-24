@@ -5,7 +5,7 @@
         <h2>Create chat room</h2>
 
         <ApolloMutation
-          :mutation="require('../graphql/CreateChatRoom.gql')"
+          :mutation="require('../graphql/room/CreateChatRoom.gql')"
           :variables="{
             userId: user.id,
             name: roomName
@@ -24,9 +24,9 @@
     </div>
     <div class="chat-rooms">
       <h2>chat rooms</h2>
-      <ApolloQuery :query="require('../graphql/ChatRooms.gql')">
+      <ApolloQuery :query="require('../graphql/room/ChatRooms.gql')">
         <ApolloSubscribeToMore
-          :document="require('../graphql/ChatRoomsUpdated.gql')"
+          :document="require('../graphql/room/ChatRoomsUpdated.gql')"
           :update-query="onChatRoomsUpdated"
         />
 
@@ -75,7 +75,8 @@ export default {
       }
     },
     enterRoom(roomId) {
-      this.$router.push('/chat-room/' + roomId)
+      console.log('enterRoom -> roomId', roomId)
+      this.$router.push('/drawer/' + roomId)
     }
   },
   computed: {

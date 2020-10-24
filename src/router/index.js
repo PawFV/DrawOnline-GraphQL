@@ -15,6 +15,12 @@ const routes = [
     name: 'ChatRoom',
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/ChatRoom.vue')
+  },
+  {
+    path: '/drawer/:id',
+    name: 'Drawer',
+    component: () =>
+      import(/* webpackChunkName: "drawer" */ '../views/Drawer.vue')
   }
 ]
 

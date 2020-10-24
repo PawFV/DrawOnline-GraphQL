@@ -1,0 +1,3 @@
+mutation updateCanvasState($id: ID!, $state: JSON!) {
+  updateCanvasState(id: $id, state: $state)
+}

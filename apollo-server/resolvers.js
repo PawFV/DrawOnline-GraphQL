@@ -1,7 +1,11 @@
 import GraphQLJSON from 'graphql-type-json'
 import shortid from 'shortid'
 import { withFilter } from 'graphql-subscriptions'
-
+import {
+  drawerQueries,
+  drawerMutations,
+  drawerSubscriptions
+} from './drawerResolvers.js'
 export default {
   JSON: GraphQLJSON,
 
@@ -10,6 +14,7 @@ export default {
   },
 
   Query: {
+    ...drawerQueries,
     messages: (root, args, { db }) => db.get('messages').value(),
     chatRoom: (_, { id }, { db }) => {
       const chatRoom = db
@@ -30,6 +35,7 @@ export default {
   },
 
   Mutation: {
+    ...drawerMutations,
     myMutation: (root, args, context) => {
       const message = 'My mutation completed!'
       context.pubsub.publish('hey', { mySub: message })
@@ -111,6 +117,7 @@ export default {
   },
 
   Subscription: {
+    ...drawerSubscriptions,
     mySub: {
       subscribe: (parent, args, { pubsub }) => pubsub.asyncIterator('hey')
     },
