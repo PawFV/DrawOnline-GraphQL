@@ -9,6 +9,9 @@ npm install
 ```
 npm run serve
 ```
+```
+npm run apollo
+```
 
 ### Compiles and minifies for production
 ```
