@@ -1,0 +1,3 @@
+query ChatRoom($id: ID!) {
+  chatRoom(id: $id)
+}

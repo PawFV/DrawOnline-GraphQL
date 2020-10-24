@@ -1,0 +1,6 @@
+#import "./ChatRoomFragment.gql"
+query chatRooms {
+  chatRooms {
+    ...ChatRoom
+  }
+}

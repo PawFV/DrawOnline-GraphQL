@@ -1,0 +1,3 @@
+mutation AddChatRoomMessage($id: ID!, $name: String!, $message: String!) {
+  addChatRoomMessage(id: $id, name: $name, message: $message)
+}

@@ -1,0 +1,7 @@
+#import "./ChatRoomFragment.gql"
+
+subscription chatRoomsUpdated {
+  chatRoomsUpdated {
+    ...ChatRoom
+  }
+}

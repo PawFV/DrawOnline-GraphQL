@@ -1,0 +1,6 @@
+#import "./ChatRoomFragment.gql"
+mutation CreateChatRoom($userId: ID!, $name: String!) {
+  createChatRoom(userId: $userId, name: $name) {
+    ...ChatRoom
+  }
+}

@@ -1,0 +1,7 @@
+fragment ChatRoom on ChatRoom {
+  id
+  users
+  creator
+  name
+  messages
+}

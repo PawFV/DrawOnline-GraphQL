@@ -1,0 +1,71 @@
+"Included scalars"
+scalar JSON
+scalar Upload
+
+"It will increment!"
+type Counter {
+  "Number of increments"
+  count: Int!
+  "Full message for testing"
+  countStr: String
+}
+
+"A text message send by users"
+type Message {
+  id: ID!
+  "Message content"
+  text: String!
+}
+
+"Input from user to create a message"
+input MessageInput {
+  "Message content"
+  text: String!
+}
+
+type File {
+  id: ID!
+  path: String!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+}
+
+type ChatRoom {
+  id: ID!
+  users: [ID!]!
+  creator: ID!
+  name: String!
+  messages: [String!]
+}
+
+type Query {
+  "Test query with a parameter"
+  hello(name: String): String!
+  "List of messages sent by users"
+  messages: [Message]
+  uploads: [File]
+  chatRooms: [ChatRoom]
+  chatRoom(id: ID!): String!
+}
+
+type Mutation {
+  myMutation: String!
+  "Add a message and publish it on 'messages' subscription channel"
+  singleUpload(file: Upload!): File!
+  multipleUpload(files: [Upload!]!): [File!]!
+  addMessage(input: MessageInput!): Message!
+  createChatRoom(userId: ID!, name: String!): ChatRoom!
+  userJoinedRoom(id: ID!, userId: ID!, name: String!): String
+  addChatRoomMessage(id: ID!, name: String!, message: String!): String
+}
+
+type Subscription {
+  mySub: String!
+  "This will update every 2 seconds"
+  counter: Counter!
+  "When a new message is added"
+  messageAdded: Message!
+  chatRoomsUpdated: ChatRoom!
+  chatRoomMessage(id: ID!): String
+}
